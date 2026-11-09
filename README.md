@@ -1,3 +1,4 @@
+![CI Status](https://github.com/fallcarrots/mytodo/actions/workflows/test.yml/badge.svg)
 # mytodo
 
 一个用 Pydantic 写的极简命令行 TODO 工具。
