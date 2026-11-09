@@ -1,14 +1,16 @@
-from pydantic import BaseModel, Field
 from datetime import datetime
 from pathlib import Path
 from typing import Literal
-import json
+
+from pydantic import BaseModel, Field
+
 
 class Task(BaseModel):
     id: int
     title: str = Field(min_length=1, max_length=80)
     status: Literal["todo", "doing", "done"] = "todo"
     created_at: datetime = Field(default_factory=datetime.now)
+
 
 class TaskList(BaseModel):
     tasks: list[Task] = []
@@ -34,6 +36,7 @@ class TaskList(BaseModel):
         if not path.exists():
             return cls()
         return cls.model_validate_json(path.read_text(encoding="utf-8"))
+
 
 # 主程序
 if __name__ == "__main__":
