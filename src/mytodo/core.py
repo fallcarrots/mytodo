@@ -32,7 +32,7 @@ class TaskList(BaseModel):
         path.write_text(self.model_dump_json(indent=2), encoding="utf-8")
 
     @classmethod
-    def load(cls, path: Path) -> "TaskList":
+    def load(cls, path: Path) -> TaskList:
         if not path.exists():
             return cls()
         return cls.model_validate_json(path.read_text(encoding="utf-8"))
